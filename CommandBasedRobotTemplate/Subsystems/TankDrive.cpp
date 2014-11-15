@@ -4,6 +4,7 @@
 
 TankDrive::TankDrive() : Subsystem("TankDrive") {
 	drive = new RobotDrive(new Victor(LEFT_VICTOR), new Victor(RIGHT_VICTOR));
+	ir = new AnalogChannel(1,IR_CHANNEL);
 }
     
 void TankDrive::InitDefaultCommand() {
@@ -14,6 +15,10 @@ void TankDrive::InitDefaultCommand() {
 
 void TankDrive::tankDrive(float l, float r){
 	drive->TankDrive(l,r);
+}
+
+float TankDrive::getIRVoltage(){
+	return ir->GetVoltage();
 }
 
 
