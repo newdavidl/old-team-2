@@ -37,6 +37,7 @@ private:
 	virtual void TeleopPeriodic() {
 		Scheduler::GetInstance()->Run();
 		SmartDashboard::PutNumber("IR Voltage", CommandBase::tankDrive->getIRVoltage());
+		SmartDashboard::PutNumber("Throttle Value", CommandBase::oi->getThrottle());
 	}
 	
 	virtual void TestPeriodic() {

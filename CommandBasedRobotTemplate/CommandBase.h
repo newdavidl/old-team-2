@@ -4,6 +4,7 @@
 #include "Commands/Command.h"
 #include "Subsystems/TankDrive.h"
 #include "OI.h"
+#include "Subsystems/ArmControl.h"
 
 
 /**
@@ -19,6 +20,7 @@ public:
 	// Create a single static instance of all of your subsystems
 	static TankDrive* tankDrive;
 	static OI *oi;
+	static ArmControl* armControl;
 };
 
 #endif

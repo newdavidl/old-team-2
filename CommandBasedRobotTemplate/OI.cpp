@@ -33,3 +33,7 @@ float OI::getLeftY(){
 float OI::getRightY(){
 	return right->GetY();
 }
+
+float OI::getThrottle() {
+	return left->GetTwist();
+}

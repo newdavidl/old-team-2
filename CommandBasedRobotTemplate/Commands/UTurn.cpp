@@ -8,7 +8,7 @@ UTurn::UTurn() {
 
 // Called just before this Command runs the first time
 void UTurn::Initialize() {
-	SetTimeout(0);
+	SetTimeout(2);
 }
 
 // Called repeatedly when this Command is scheduled to run
