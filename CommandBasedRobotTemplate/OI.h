@@ -9,11 +9,12 @@ class OI {
 private:
 	Joystick* left;
 	Joystick* right;
-	AnalogChannel* ir;
+	
 public:
 	OI();
 	float getLeftY();
 	float getRightY();
+	float getThrottle();
 };
 
 #endif

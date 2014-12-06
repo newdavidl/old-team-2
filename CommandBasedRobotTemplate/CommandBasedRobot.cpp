@@ -1,20 +1,22 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
-#include "Commands/Drive.h"
+#include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 
 class CommandBasedRobot : public IterativeRobot {
 private:
-	Command *driveCommand;
+	Command *autonomousCommand;
+	//Command * teleopCommand;
 	LiveWindow *lw;
 	
 	virtual void RobotInit() {
 		CommandBase::init();
+		autonomousCommand = new ExampleCommand(); // does nothing for now
 		lw = LiveWindow::GetInstance();
-		driveCommand = new Drive();
 	}
 	
 	virtual void AutonomousInit() {
+		autonomousCommand->Start();
 	}
 	
 	virtual void AutonomousPeriodic() {
@@ -26,11 +28,16 @@ private:
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		driveCommand->Start();
+		
+		autonomousCommand->Cancel();
+		
+		
 	}
 	
-	virtual void TeleopPeriodic() { 
+	virtual void TeleopPeriodic() {
 		Scheduler::GetInstance()->Run();
+		SmartDashboard::PutNumber("IR Voltage", CommandBase::tankDrive->getIRVoltage());
+		SmartDashboard::PutNumber("Throttle Value", CommandBase::oi->getThrottle());
 	}
 	
 	virtual void TestPeriodic() {
