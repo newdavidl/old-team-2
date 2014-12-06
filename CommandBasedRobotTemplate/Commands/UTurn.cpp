@@ -8,12 +8,12 @@ UTurn::UTurn() {
 
 // Called just before this Command runs the first time
 void UTurn::Initialize() {
-	SetTimeout(0);
+	SetTimeout(5);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void UTurn::Execute() {
-	tankDrive->tankDrive(-1,-0.2);
+	tankDrive->tankDrive(-1,-0.1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
