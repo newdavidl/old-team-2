@@ -18,22 +18,26 @@ OI::OI() {
 	Button* button4 = new JoystickButton(left, 8);
 	Button* button6 = new JoystickButton(left, 4);
 	Button* button5 = new JoystickButton(left, 9);
+	Button* button7 = new JoystickButton(left, 10);
 	button1->WhenPressed(new RotateCW90());
 	button2->WhenPressed(new RotateCCW90());
 	button3->WhenPressed(new Drive2Secs());
 	button4->WhenPressed(new TurnAndDrive());
 	button6->WhenPressed(new FollowWall());
 	button5->WhenPressed(new UTurn());
+	button7->WhenPressed(new SquareUp());
 }
 
 float OI::getLeftY(){
-	return left->GetY();
+	return -left->GetY();
 }
 
 float OI::getRightY(){
-	return right->GetY();
+	return -right->GetY();
 }
 
 float OI::getThrottle() {
-	return left->GetTwist();
+	float value = ((left->GetTwist()) / 2.1) + 0.47;
+	SmartDashboard::PutNumber("Arm Servo Value", value);
+	return value;
 }
